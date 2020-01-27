@@ -41,6 +41,14 @@
 
     <!-- include the XQuery Library modules written in XQuery from this project -->
     <xquerySets>
+        <xquerySet>
+            <namespace>http://exist-db.org/xquery/stanford-nlp/ner/chinese</namespace>
+            <directory>${basedir}/src/main/xquery</directory>
+            <includes>
+                <include>ner-module.xqm</include>
+            </includes>
+            <outputDirectory>content</outputDirectory>
+        </xquerySet>
     </xquerySets>
 
     <!-- include the XQuery Library Module written in Java (JAR output) from this project -->
