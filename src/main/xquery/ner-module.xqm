@@ -16,13 +16,13 @@ declare
   %rest:path("/StanfordNLP/NER/chinese")
   %rest:PUT("{$request-body}")
 function nerzh:classify-document($request-body as document-node(element())) {
-    let $annotators := "tokenize, ssplit, pos, lemma, ner"
+    let $annotators := fn:json-doc("/db/apps/stanford-nlp-chinese/data/StanfordCoreNLP-chinese.json")
     return nerzh:dispatch($request-body/node(), $annotators)
 };
 
 declare
 function nerzh:classify-node($node as node()) {
-    let $annotators := "tokenize, ssplit, pos, lemma, ner"
+    let $annotators := fn:json-doc("/db/apps/stanford-nlp-chinese/data/StanfordCoreNLP-chinese.json")
     return nerzh:dispatch($node, $annotators)
 };
 
@@ -30,7 +30,7 @@ declare
     %rest:path("/StanfordNLP/NER/chinese")
     %rest:form-param("text", "{$text}")
 function nerzh:classify-text($text as xs:string) {
-    let $annotators := "tokenize, ssplit, pos, lemma, ner"
+    let $annotators := fn:json-doc("/db/apps/stanford-nlp-chinese/data/StanfordCoreNLP-chinese.json")
     return nerzh:classify($node/text(), $annotators)
 };
 
@@ -72,7 +72,7 @@ declare function nerzh:enrich($text as xs:string, $tokens as node()*) {
     
 };
 
-declare function nerzh:dispatch($node as node()?, $annotators as xs:string) {
+declare function nerzh:dispatch($node as node()?, $annotators as map(*)) {
     if ($node)
     then
         if (functx:has-simple-content($node))
@@ -81,7 +81,7 @@ declare function nerzh:dispatch($node as node()?, $annotators as xs:string) {
         else ()
 };
 
-declare function nerzh:pass-through($node as node()?, $annotators as xs:string) {
+declare function nerzh:pass-through($node as node()?, $annotators as map(*)) {
     if ($node)
     then element { $node/name() } { 
         $node/@*,  
@@ -91,8 +91,8 @@ declare function nerzh:pass-through($node as node()?, $annotators as xs:string) 
     else ()
 };
 
-declare function nerzh:classify($text as xs:string, $annotators as xs:string) {
-let $tokens := for $token in nlp-zh:classify-string($annotators, $text)//token[fn:not(NER = "O")]
+declare function nerzh:classify($text as xs:string, $annotators as map(*)) {
+let $tokens := for $token in nlp-zh:parse($text, $annotators)//token[fn:not(NER = "O")]
                 let $token-start := $token/CharacterOffsetBegin/number()
                 order by $token-start descending
             return $token

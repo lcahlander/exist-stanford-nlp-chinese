@@ -35,8 +35,7 @@ public class StanfordNLPModule extends AbstractInternalModule {
     public final static String PREFIX = "nlpzh";
 
     public final static FunctionDef[] functions = {
-        new FunctionDef(StanfordNLPFunction.signatures[0], StanfordNLPFunction.class),
-        new FunctionDef(StanfordNLPFunction.signatures[1], StanfordNLPFunction.class)
+        new FunctionDef(StanfordNLPFunction.signatures[0], StanfordNLPFunction.class)
     };
 
     public StanfordNLPModule(Map<String, List<? extends Object>> parameters) {
