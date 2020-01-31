@@ -13,7 +13,7 @@
 
     <groupId>org.exist-db</groupId>
     <artifactId>stanford-nlp-chinese</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.5.1</version>
 
     <name>Stanford NLP Chinese</name>
     <description>Stanford Natural Language Processing for Chinese</description>
@@ -33,14 +33,14 @@
     </licenses>
 
     <scm>
-        <url>https://www.github.com/my-organisation/example-exist-app.git</url>
-        <connection>scm:git:https://www.github.com/my-organisation/example-exist-app.git</connection>
-        <developerConnection>scm:git:https://www.github.com/my-organisation/example-exist-app.git</developerConnection>
+        <url>https://github.com/lcahlander/exist-stanford-nlp-chinese.git</url>
+        <connection>scm:git:https://github.com/lcahlander/exist-stanford-nlp-chinese.git</connection>
+        <developerConnection>scm:git:https://github.com/lcahlander/exist-stanford-nlp-chinese.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://www.github.com/my-organisation/example-exist-app/issues</url>
+        <url>https://github.com/lcahlander/exist-stanford-nlp-chinese/issues</url>
     </issueManagement>
 
     <properties>
@@ -174,7 +174,7 @@
             <plugin>
                 <groupId>ro.kuberam.maven.plugins</groupId>
                 <artifactId>kuberam-expath-plugin</artifactId>
-                <version>0.6.2-SNAPSHOT</version>
+                <version>0.6.2</version>
                 <executions>
                     <execution>
                         <id>create-xar</id>
