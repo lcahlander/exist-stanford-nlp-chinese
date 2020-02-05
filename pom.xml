@@ -13,7 +13,7 @@
 
     <groupId>org.exist-db</groupId>
     <artifactId>stanford-nlp-chinese</artifactId>
-    <version>0.5.1</version>
+    <version>0.5.3</version>
 
     <name>Stanford NLP Chinese</name>
     <description>Stanford Natural Language Processing for Chinese</description>
